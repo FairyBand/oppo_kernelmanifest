@@ -19,7 +19,7 @@
     <linkfile dest="kernel/build/prebuilts/build-tools" src="."/>
   </project>
   <project remote="clo-la" name="kernel_platform/prebuilts/clang-tools" path="kernel/prebuilts/clang-tools" revision="0613fc5443d035335a9541994607bacae03750f2" upstream="refs/heads/ks-kernel.lnx.3.0.r1-rel" clone-depth="1">
-    <linkfile dest="kernel_platform/build/prebuilts/clang-tools" src="."/>
+    <linkfile dest="kernel/build/prebuilts/clang-tools" src="."/>
   </project>
   <project remote="clo-la" name="kernel_platform/prebuilts/jdk/jdk11" path="kernel/prebuilts/jdk/jdk11" revision="ced68c9308cbc1b6ec3e602dba8d0d56df8b6d73" upstream="refs/heads/ks-kernel.lnx.3.0.r1-rel" clone-depth="1"/>
   <project remote="clo-la" name="kernel_platform/system/tools/mkbootimg" path="kernel/tools/mkbootimg" revision="b17f184a20744a7e0a421f901bdf20a23be22b07" upstream="refs/heads/ks-kernel.lnx.3.0.r1-rel" clone-depth="1"/>
