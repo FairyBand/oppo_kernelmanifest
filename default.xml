@@ -2,10 +2,10 @@
 <manifest>
   <remote fetch="https://git.codelinaro.org/clo/la" name="clo-la"/>
   <default remote="clo-la" revision="dummy_revision" sync-c="true" sync-tags="false"/>
-  <remote fetch="https://gh-proxy.com/https://github.com/OnePlusOSS" name="origin"/>
-  <remote fetch="https://gh-proxy.com/https://github.com/yaap" name="yaap" revision="kplatform"/>
-  <remote fetch="https://gh-proxy.com/https://github.com/RealJohnGalt" name="commonkernel" revision="kplatform"/>
-  <remote fetch="https://gh-proxy.com/https://github.com/RealJohnGalt" name="msmkernel" revision="kplatform"/>
+  <remote fetch="https://github.com/OnePlusOSS" name="origin"/>
+  <remote fetch="https://github.com/yaap" name="yaap" revision="kplatform"/>
+  <remote fetch="https://github.com/RealJohnGalt" name="commonkernel" revision="kplatform"/>
+  <remote fetch="https://github.com/RealJohnGalt" name="msmkernel" revision="kplatform"/>
   <project remote="commonkernel" name="kernel_common_oneplus_sm8650" path="kernel_platform/common">
     <linkfile dest="kernel_platform/.source_date_epoch_dir" src="."/>
   </project>
