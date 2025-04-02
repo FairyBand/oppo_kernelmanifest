@@ -5,7 +5,7 @@
     <remote name="op12dev" fetch="https://github.com/yaap/kernel_oneplus_sm8650" sync-c="true" sync-tags="false" revision="fifteen-eevdf"/>
     <remote name="yaap" fetch="https://github.com/yaap" sync-c="true" sync-tags="false" revision="fifteen" />
 
-    <project name="kernel_oneplus_sm8650_modules_and_devicetree" path="." remote="yaap" revision="kplatform" ./>
+    <project name="kernel_oneplus_sm8650_modules_and_devicetree" path="./" remote="yaap" revision="kplatform" ./>
     
     <!-- GKI -->
     <remove-project name="kernel/common"/>
