@@ -3,8 +3,10 @@
     <remote name="google" fetch="https://android.googlesource.com" sync-c="true" sync-tags="false"/>
     <remote name="op" fetch="https://github.com/op7675-kernel" sync-c="true" sync-tags="false" revision="master"/>
     <remote name="op12dev" fetch="https://github.com/yaap/kernel_oneplus_sm8650" sync-c="true" sync-tags="false" revision="fifteen-eevdf"/>
-    <remote name="yaap" fetch="https://github.com/YAAP" sync-c="true" sync-tags="false" revision="fourteen"/>
+    <remote name="yaap" fetch="https://github.com/yaap" sync-c="true" sync-tags="false" revision="fifteen" />
 
+    <project name="kernel_oneplus_sm8650_modules_and_devicetree" path="." remote="yaap" revision="kplatform" ./>
+    
     <!-- GKI -->
     <remove-project name="kernel/common"/>
     <project name="kernel/common" path="kernel_platform/common" remote="google" revision="android14-6.1" depth="1" >
@@ -13,7 +15,7 @@
 
     <!-- qcom-6.1 kernel -->
     <remove-project name="kernel/qcom"/>
-    <project name="kernel_oneplus_sm8650" path="kernel_platform/msm-kernel" remote="yaap" >
+    <project name="kernel_oneplus_sm8650" path="kernel_platform/msm-kernel" remote="yaap" revision="fifteen-eevdf" >
         <linkfile dest="kernel_platform/common/build.config.msm.pineapple" src="build.config.msm.pineapple"/>
         <linkfile dest="kernel_platform/common/build.config.constants" src="build.config.constants"/>
         <linkfile dest="kernel_platform/common/scripts/setlocalversion" src="scripts/setlocalversion"/>
@@ -22,11 +24,4 @@
     </project>
 
     <!-- smth in oplus -->
-    <project name="kernel_oneplus_sm8650-modules" path="vendor" remote="yaap">
-        <linkfile dest="kernel_platform/vendor" src="."/>
-    </project>
-    <project name="kernel_platform_qcom_sm8650" path="kernel_platform/qcom" remote="yaap"/>
-    <project name="kernel_platform_oplus_sm8650" path="kernel_platform/oplus" remote="yaap">
-        <linkfile dest="kernel_platform/build/kernel/oplus" src="bazel"/>
-    </project>
 </manifest>
