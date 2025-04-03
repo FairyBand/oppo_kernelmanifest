@@ -1,30 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-    <remote name="google" fetch="https://android.googlesource.com" sync-c="true" sync-tags="false"/>
-    <remote name="op" fetch="https://github.com/op7675-kernel" sync-c="true" sync-tags="false" revision="master"/>
-    <remote name="op12dev" fetch="https://github.com/yaap/kernel_oneplus_sm8650" sync-c="true" sync-tags="false" revision="fifteen-eevdf"/>
-    <remote name="yaap" fetch="https://github.com/yaap" sync-c="true" sync-tags="false" revision="fifteen" />
+  <remote name="OPLUS"
+      fetch="https://github.com/yaap/"
+      sync-c="true"
+      sync-tags="false"
+      revision="fifteen" />
+  <remote name="buildscript"
+      fetch="https://github.com/OnePlus-12-Development/"
+      sync-c="true"
+      sync-tags="false"
+      revision="lineage-21" />
 
-    <project name="kernel_oneplus_sm8650_modules_and_devicetree" path="./" remote="yaap" revision="kplatform" />
+  <!-- MSM kernel -->
+  <project name="kernel_oneplus_sm8650" path="kernel_platform/msm-kernel" remote="OPLUS" >
+    <linkfile dest="kernel_platform/common/build.config.msm.pineapple" src="build.config.msm.pineapple"/>
+    <linkfile dest="kernel_platform/WORKSPACE" src="bazel.WORKSPACE"/>
+    <linkfile dest="kernel_platform/build_with_bazel.py" src="build_with_bazel.py"/>
+  </project>
 
-    <!-- DeviceTree -->
-    <projet name="kernel_oneplus_sm8650-devicetrees" path="kernel_platform/sm8650-devicetrees" remote="yaap" revision="fifteen" />
+   <!-- kernel-vendor-modules -->
+  <project name="kernel_oneplus_sm8650-modules" path="vendor" remote="OPLUS" >
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/audio_kernel_vendor_board.mk" src="vendor/qcom/opensource/audio-kernel/audio_kernel_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/audio_kernel_product_board.mk" src="vendor/qcom/opensource/audio-kernel/audio_kernel_product_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/camera-kernel_product.mk" src="vendor/qcom/opensource/camera-kernel/product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/camera-kernel_board.mk" src="vendor/qcom/opensource/camera-kernel/board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/display_driver_product.mk" src="vendor/qcom/opensource/display-drivers/display_driver_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/display_driver_board.mk" src="vendor/qcom/opensource/display-drivers/display_driver_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/mmrm_kernel_board.mk" src="vendor/qcom/opensource/mmrm-driver/mmrm_kernel_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/mmrm_kernel_product.mk" src="vendor/qcom/opensource/mmrm-driver/mmrm_kernel_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/mm_driver_board.mk" src="vendor/qcom/opensource/mm-drivers/mm_driver_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/mm_driver_product.mk" src="vendor/qcom/opensource/mm-drivers/mm_driver_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/mm_driver_board.mk" src="vendor/qcom/opensource/securemsm-kernel/securemsm_kernel_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/securemsm_kernel_product_board.mk" src="vendor/qcom/opensource/securemsm-kernel/securemsm_kernel_product_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/video_kernel_board.mk" src="vendor/qcom/opensource/video-driver/video_kernel_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/video_kernel_product.mk" src="vendor/qcom/opensource/video-driver/video_kernel_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/dataipa_dlkm_vendor_board.mk" src="vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/dataipa_dlkm_vendor_product.mk" src="vendor/qcom/opensource/dataipa/dataipa_dlkm_vendor_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/datarmnet_dlkm_vendor_board.mk" src="vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/datarmnet_dlkm_vendor_product.mk" src="vendor/qcom/opensource/datarmnet/datarmnet_dlkm_vendor_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/datarmnet_ext_dlkm_vendor_board.mk" src="vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/datarmnet_ext_dlkm_vendor_product.mk" src="vendor/qcom/opensource/datarmnet-ext/datarmnet_ext_dlkm_vendor_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/bt_kernel_vendor_board.mk" src="vendor/qcom/opensource/bt-kernel/bt_kernel_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/bt_kernel_product_board.mk" src="vendor/qcom/opensource/bt-kernel/bt_kernel_product_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/eva_kernel_board.mk" src="vendor/qcom/opensource/eva-kernel/eva_kernel_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/eva_kernel_product.mk" src="vendor/qcom/opensource/eva-kernel/eva_kernel_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/touch_driver_board.mk" src="vendor/qcom/opensource/touch-drivers/touch_driver_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/touch_driver_product.mk" src="vendor/qcom/opensource/touch-drivers/touch_driver_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/nfc_kernel_dlkm_vendor_board.mk" src="vendor/qcom/opensource/nfc-st-driver/nfc_kernel_dlkm_vendor_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/nfc_kernel_dlkm_vendor_product.mk" src="vendor/qcom/opensource/nfc-st-driver/nfc_kernel_dlkm_vendor_product.mk"/>
+    <linkfile dest="vendor/nxp/defs/board-defs/vendor/nfc_kernel_dlkm_vendor_board.mk" src="vendor/nxp/opensource/driver/nfc_kernel_dlkm_vendor_board.mk"/>
+    <linkfile dest="vendor/nxp/defs/product-defs/vendor/nfc_kernel_dlkm_vendor_product.mk" src="vendor/nxp/opensource/driver/nfc_kernel_dlkm_vendor_product.mk"/>
+    <linkfile dest="vendor/qcom/defs/board-defs/vendor/ese_kernel_board.mk" src="vendor/qcom/opensource/eSE-driver/ese_kernel_board.mk"/>
+    <linkfile dest="vendor/qcom/defs/product-defs/vendor/ese_kernel_product.mk" src="vendor/qcom/opensource/eSE-driver/ese_kernel_product.mk"/>
     
-    <!-- GKI -->
-    <remove-project name="kernel/common"/>
-    <project name="kernel/common" path="kernel_platform/common" remote="google" revision="android14-6.1-lts" depth="1" >
-        <linkfile dest=".source_date_epoch_dir" src="."/>
-    </project>
+  </project>
 
-    <!-- qcom-6.1 kernel -->
-    <remove-project name="kernel/qcom"/>
-    <project name="kernel_oneplus_sm8650" path="kernel_platform/msm-kernel" remote="yaap" revision="fifteen" >
-        <linkfile dest="kernel_platform/common/build.config.msm.pineapple" src="build.config.msm.pineapple"/>
-        <linkfile dest="kernel_platform/common/build.config.constants" src="build.config.constants"/>
-        <linkfile dest="kernel_platform/common/scripts/setlocalversion" src="scripts/setlocalversion"/>
-        <linkfile dest="kernel_platform/WORKSPACE" src="bazel.WORKSPACE"/>
-        <linkfile dest="kernel_platform/build_with_bazel.py" src="build_with_bazel.py"/>
-    </project>
+  <!-- explorer
+  <project name="vendor_oplus_kernel_explorer" path="vendor/oplus/kernel/explorer" remote="OPLUS" >
+    <linkfile dest="vendor/oplus/defs/board-defs/vendor/explorer_lahaina_board.mk" src="explorer_lahaina_board.mk"/>
+    <linkfile dest="vendor/oplus/defs/product-defs/vendor/explorer_lahaina_product.mk" src="explorer_lahaina_product.mk"/>
+  </project> -->
 
-    <!-- smth in oplus -->
+  <!-- Build script -->
+  <project name="kernel_platform_script" path="kernel_platform/script" remote="buildscript">
+    <linkfile dest="build.sh" src="build.sh"/>
+  </project>
 </manifest>
